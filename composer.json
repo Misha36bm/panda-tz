@@ -1,0 +1,21 @@
+{
+    "name": "panda/tz",
+    "description": "Panda Team test task",
+    "type": "project",
+    "require": {
+        "illuminate/database": "^10.12"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^6.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Panda\\Tz\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Misha36bm"
+        }
+    ]
+}
