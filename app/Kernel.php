@@ -2,18 +2,23 @@
 
 namespace Panda\Tz;
 
+use Dotenv\Dotenv;
+
 
 class Kernel
 {
     private $router;
 
+    private $envData;
+
     public function __construct(
         private string $appPath
     ) {
+        $this->bindEnvVariables();
         $this->bindRoutes();
     }
 
-    public function bindRoutes()
+    private function bindRoutes()
     {
         $this->router = new Router($this->appPath . '/routes/');
     }
@@ -21,5 +26,10 @@ class Kernel
     public function getRouter()
     {
         return $this->router;
+    }
+
+    private function bindEnvVariables()
+    {
+        Dotenv::createImmutable($this->appPath)->load();
     }
 }
