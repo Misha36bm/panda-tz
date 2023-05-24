@@ -3,7 +3,9 @@
     "description": "Panda Team test task",
     "type": "project",
     "require": {
-        "illuminate/database": "^10.12"
+        "illuminate/database": "^10.12",
+        "nikic/fast-route": "*",
+        "filp/whoops": "^2.15"
     },
     "require-dev": {
         "symfony/var-dumper": "^6.2"
