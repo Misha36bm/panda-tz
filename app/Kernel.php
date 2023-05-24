@@ -9,8 +9,6 @@ class Kernel
 {
     private $router;
 
-    private $envData;
-
     public function __construct(
         private string $appPath
     ) {
