@@ -36,10 +36,10 @@ class Router
     {
         switch ($routeInfo[0]) {
             case Dispatcher::NOT_FOUND:
-                echo '404 - Сторінка не знайдена';
+                throw new Exception('404 - Page not found', 404);
                 break;
             case Dispatcher::METHOD_NOT_ALLOWED:
-                echo '405 - Неприпустимий метод';
+                throw new Exception('405 - Неприпустимий метод', 405);
                 break;
             case Dispatcher::FOUND:
                 $handler = $routeInfo[1];
