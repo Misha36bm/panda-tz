@@ -18,6 +18,13 @@ if (env('APP_ENV') == 'dev') {
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];
 
+function app()
+{
+    global $app;
+
+    return $app;
+}
+
 echo $app
     ->getRouter()
     ->dispatch($httpMethod, $uri);
