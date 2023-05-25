@@ -14,7 +14,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Panda\\Tz\\": "app/"
+            "Panda\\Tz\\": "app/",
+            "Migrations\\": "database/migrations"
         }
     },
     "authors": [
