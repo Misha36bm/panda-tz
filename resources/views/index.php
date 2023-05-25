@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- TODO: remove theme  -->
+<html lang="en" data-bs-theme="dark">
 
 <?php require_once 'partials/head.php' ?>
 
