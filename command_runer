@@ -1,0 +1,101 @@
+<?php
+
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Migrations\{
+    CreateQuizOptionsTable,
+    CreateQuizzesTable,
+    CreateUsersTable,
+};
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+$commandList = "
+List of available commands:
+
+'migrate' - run all migrations.\n
+";
+
+$commandBlackList = ['getConncetion', 'env'];
+
+$command = (string) readline('Enter command: ');
+
+if (!function_exists($command) || !is_callable($command) || in_array($command, $commandBlackList)) {
+    die("Command not exists!\n" . $commandList);
+}
+
+try {
+    echo "\n" . call_user_func($command);
+    die("\n");
+} catch (\Throwable $th) {
+    throw $th;
+    die;
+}
+
+function migrate()
+{
+    $capsule = getConncetion();
+
+    $schema = $capsule->schema();
+
+    if (!$schema->hasTable('users')) {
+        (new CreateUsersTable)->up($schema);
+    }
+
+    if (!$schema->hasTable('quizzes')) {
+        (new CreateQuizzesTable)->up($schema);
+    }
+
+    if (!$schema->hasTable('quizzes_options')) {
+        (new CreateQuizOptionsTable)->up($schema);
+    }
+
+    return null;
+}
+
+
+/**
+ * @return \Illuminate\Database\Capsule\Manager
+ */
+function getConncetion()
+{
+    $capsule = new Capsule();
+
+    $capsule->addConnection([
+        'driver' => env('DB_CONNECTION'),
+        'host' => env('DB_HOST'),
+        'database' => env('DB_DATABASE'),
+        'username' => env('DB_USERNAME'),
+        'password' => env('DB_PASSWORD'),
+        'charset' => 'utf8',
+        'collation' => 'utf8_unicode_ci',
+    ]);
+
+    $capsule->setAsGlobal();
+    $capsule->bootEloquent();
+
+    return $capsule;
+}
+
+function env($key, $default = null)
+{
+    $envFile = __DIR__ . '/.env';
+
+    if (file_exists($envFile)) {
+        $envData = file_get_contents($envFile);
+        $lines = explode(PHP_EOL, $envData);
+
+        foreach ($lines as $line) {
+            $line = trim($line);
+
+            if (!empty($line) && strpos($line, '=') !== false) {
+                list($envKey, $envValue) = explode('=', $line, 2);
+
+                if ($envKey === $key) {
+                    return $envValue;
+                }
+            }
+        }
+    }
+
+    return $default;
+}
