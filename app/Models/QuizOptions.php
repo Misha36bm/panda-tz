@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class QuizOptions extends Model
 {
-    protected $table = 'users';
+    protected $table = 'quiz_options';
 
     protected $fillable = [
         'quiz_id',
         'option_text',
+        'is_correct'
     ];
 
     /**
