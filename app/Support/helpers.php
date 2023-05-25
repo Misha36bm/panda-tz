@@ -4,6 +4,10 @@ function view($view = null, $data = [])
 {
     $pathToViewFolder = app()->getAppPath() . '/resources/views/';
 
+    if (str_contains($view, '.')) {
+        $view = str_replace('.', '/', $view);
+    }
+
     $path = $pathToViewFolder . $view . '.php';
 
     if (!file_exists($path)) {
