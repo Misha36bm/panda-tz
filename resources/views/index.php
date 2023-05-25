@@ -10,6 +10,8 @@
     <?php
     if (isset($slot)) {
         echo $slot;
+    } else {
+        echo view('pages.main-page');
     }
     ?>
 
