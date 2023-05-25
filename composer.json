@@ -16,7 +16,10 @@
         "psr-4": {
             "Panda\\Tz\\": "app/",
             "Migrations\\": "database/migrations"
-        }
+        },
+        "files": [
+            "app/Support/helpers.php"
+        ]
     },
     "authors": [
         {
