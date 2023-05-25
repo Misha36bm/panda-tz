@@ -22,6 +22,11 @@ class Kernel
         return $this->router;
     }
 
+    public function getAppPath()
+    {
+        return $this->appPath;
+    }
+
     private function bindRoutes()
     {
         $this->router = new Router($this->appPath . '/routes/');
