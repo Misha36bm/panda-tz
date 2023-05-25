@@ -13,7 +13,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('username')->nullable(false);
             $table->string('email')->nullable(false)->unique();
-            $table->string('password');
+            $table->string('password')->nullable(false);
         });
     }
 }

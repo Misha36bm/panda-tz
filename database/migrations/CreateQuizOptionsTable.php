@@ -12,10 +12,11 @@ class CreateQuizOptionsTable extends Migration
         $schema->create('quiz_options', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('quiz_id');
+            $table->unsignedBigInteger('quiz_id')->nullable(false);
             $table->foreign('quiz_id')->references('id')->on('quizzes');
 
-            $table->string('option_text');
+            $table->string('option_text')->nullable(false);
+            $table->boolean('is_correct')->nullable(false)->default(false);
         });
     }
 }
