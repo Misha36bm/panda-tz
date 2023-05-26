@@ -1,5 +1,6 @@
 <?php
 
+use Panda\Tz\Controllers\Admin\AdminAreaController;
 use Panda\Tz\Controllers\AuthController;
 use Panda\Tz\Controllers\HomeController;
 
@@ -37,6 +38,12 @@ return [
         'methood' => 'get',
         'url' => '/',
         'callback' => [HomeController::class, 'index']
+    ],
+
+    [
+        'methood' => 'get',
+        'url' => '/personal-area',
+        'callback' => [AdminAreaController::class, 'index']
     ],
     
     // registration
