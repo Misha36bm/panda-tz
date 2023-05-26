@@ -9,7 +9,9 @@ class AdminAreaController extends Controller
     public function index()
     {
         return view('index', [
-            'slot' => view('pages.admin.index')
+            'slot' => view('pages.admin.index', [
+                'quizzes' => auth()->getUser()->quizzes
+            ])
         ]);
     }
 }
