@@ -1,5 +1,6 @@
 <?php
 
+use Panda\Tz\Controllers\AuthController;
 use Panda\Tz\Controllers\HomeController;
 
 return [
@@ -35,5 +36,15 @@ return [
         'methood' => 'get',
         'url' => '/',
         'callback' => [HomeController::class, 'index']
+    ],
+    [
+        'methood' => 'get',
+        'url' => '/registration',
+        'callback' => [AuthController::class, 'showRegistratoinPage']
+    ],
+    [
+        'methood' => 'post',
+        'url' => '/registration',
+        'callback' => [AuthController::class, 'registration']
     ]
 ];
