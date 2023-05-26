@@ -32,11 +32,14 @@ return [
      * ]
      */
 
+    //  Pages
     [
         'methood' => 'get',
         'url' => '/',
         'callback' => [HomeController::class, 'index']
     ],
+    
+    // registration
     [
         'methood' => 'get',
         'url' => '/registration',
@@ -46,5 +49,17 @@ return [
         'methood' => 'post',
         'url' => '/registration',
         'callback' => [AuthController::class, 'registration']
-    ]
+    ],
+    
+    // Login
+    [
+        'methood' => 'get',
+        'url' => '/login',
+        'callback' => [AuthController::class, 'showLoginPage']
+    ],
+    [
+        'methood' => 'post',
+        'url' => '/login',
+        'callback' => [AuthController::class, 'login']
+    ],
 ];

@@ -35,6 +35,25 @@ class UserAuthManager
         return $status;
     }
 
+    public function login($email, $password)
+    {
+        $user = $this->userModel->where('email', $email)->first();
+
+        if (!$user) {
+            return false;
+        }
+
+        $userPassword = $user->password;
+
+        if (!password_verify($password, $userPassword)) {
+            return false;
+        }
+
+        $this->writeUserToCookie($user->username, $userPassword);
+
+        return true;
+    }
+
     private function writeUserToCookie($userName, $password)
     {
         setcookie('user_name', serialize($userName));

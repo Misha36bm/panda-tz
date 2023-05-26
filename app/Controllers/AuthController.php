@@ -25,4 +25,24 @@ class AuthController extends Controller
 
         return header("Location: /registration", true, 302);
     }
+
+    public function showLoginPage()
+    {
+        return view('index', [
+            'slot' => view('pages.auth.login'),
+        ]);
+    }
+
+    public function login()
+    {
+        $authManager = new UserAuthManager;
+
+        $logStatus = $authManager->login($this->request['email'], $this->request['password']);
+
+        if (!$logStatus) {
+            return header("Location: /", true, 302);
+        }
+
+        return header("Location: /login", true, 302);
+    }
 }
