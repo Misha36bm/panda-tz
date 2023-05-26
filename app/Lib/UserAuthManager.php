@@ -25,6 +25,24 @@ class UserAuthManager
         return $this->userModel->where('username', $userName)->where('password', $password)->exists();
     }
 
+    public function getUser()
+    {
+        $userName = $this->getFromCookies('user_name');
+        $password = $this->getFromCookies('tocken');
+
+        if (is_null($userName) || is_null($password)) {
+            return false;
+        }
+
+        $queryTemplate = $this->userModel->where('username', $userName)->where('password', $password);
+
+        if ($queryTemplate->exists()) {
+            return $queryTemplate->first();
+        }
+
+        return false;
+    }
+
     public function registerNewUser($userName, $email, $password)
     {
         if (($userName == '' && $email == '' && $password == '') || $this->isUserExists($userName, $email)) {
