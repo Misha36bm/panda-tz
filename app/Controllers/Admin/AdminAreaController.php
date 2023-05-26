@@ -18,4 +18,11 @@ class AdminAreaController extends Controller
             ])
         ]);
     }
+
+    public function create_quiz()
+    {
+        return view('index', [
+            'slot' => view('pages.admin.create-quiz')
+        ]);
+    }
 }
