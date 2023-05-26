@@ -40,12 +40,18 @@ return [
         'callback' => [HomeController::class, 'index']
     ],
 
+    // Admin area
     [
         'methood' => 'get',
         'url' => '/personal-area',
         'callback' => [AdminAreaController::class, 'index']
     ],
-    
+    [
+        'methood' => 'post',
+        'url' => '/edit-quiz/{id}',
+        'callback' => [AdminAreaController::class, 'edit_quiz']
+    ],
+
     // registration
     [
         'methood' => 'get',
@@ -57,7 +63,7 @@ return [
         'url' => '/registration',
         'callback' => [AuthController::class, 'registration']
     ],
-    
+
     // Login
     [
         'methood' => 'get',
