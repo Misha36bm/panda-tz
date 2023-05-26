@@ -62,4 +62,11 @@ return [
         'url' => '/login',
         'callback' => [AuthController::class, 'login']
     ],
+
+    // Logout
+    [
+        'methood' => 'get',
+        'url' => '/logout',
+        'callback' => [AuthController::class, 'logout']
+    ],
 ];

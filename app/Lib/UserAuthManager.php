@@ -13,6 +13,15 @@ class UserAuthManager
         $this->userModel = new User();
     }
 
+    public function logout()
+    {
+        if (!$this->isUserLogin()) {
+            return true;
+        }
+
+        $this->removeUserFromCookie();
+    }
+
     public function isUserLogin()
     {
         $userName = $this->getFromCookies('user_name');
@@ -86,8 +95,16 @@ class UserAuthManager
 
     private function writeUserToCookie($userName, $password)
     {
+        $this->removeUserFromCookie();
+
         setcookie('user_name', serialize($userName));
         setcookie('tocken', serialize($password));
+    }
+
+    private function removeUserFromCookie()
+    {
+        setcookie('user_name');
+        setcookie('tocken');
     }
 
     private function getFromCookies($key)

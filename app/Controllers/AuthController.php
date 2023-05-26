@@ -23,6 +23,7 @@ class AuthController extends Controller
             return header("Location: /", true, 302);
         }
 
+
         return header("Location: /registration", true, 302);
     }
 
@@ -39,10 +40,21 @@ class AuthController extends Controller
 
         $logStatus = $authManager->login($this->request['email'], $this->request['password']);
 
-        if (!$logStatus) {
+        if ($logStatus) {
             return header("Location: /", true, 302);
         }
 
+
         return header("Location: /login", true, 302);
+    }
+
+    public function logout()
+    {
+        $authManager = new UserAuthManager;
+
+        $authManager->logout();
+
+
+        return header("Location: /", true, 302);
     }
 }
