@@ -8,6 +8,10 @@ class AdminAreaController extends Controller
 {
     public function index()
     {
+        if (!auth()->isUserLogin()) {
+            return header("Location: /", true, 302);
+        }
+
         return view('index', [
             'slot' => view('pages.admin.index', [
                 'quizzes' => auth()->getUser()->quizzes
