@@ -20,7 +20,7 @@ class AuthController extends Controller
         $regStatus = $authManager->registerNewUser($this->request['username'], $this->request['email'], $this->request['password']);
 
         if ($regStatus) {
-            return header("Location: /", true, 302);
+            return header("Location: /personal-area", true, 302);
         }
 
 
@@ -41,7 +41,7 @@ class AuthController extends Controller
         $logStatus = $authManager->login($this->request['email'], $this->request['password']);
 
         if ($logStatus) {
-            return header("Location: /", true, 302);
+            return header("Location: /personal-area", true, 302);
         }
 
 
