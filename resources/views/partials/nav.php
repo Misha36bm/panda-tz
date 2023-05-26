@@ -1,4 +1,4 @@
-<div class="container-fluid border-bottom">
+<div class="container-fluid border-bottom pt-2">
     <div class="container">
         <header class="row d-flex justify-content-between">
             <div class="col-md-3 mb-2 mb-md-0">
@@ -12,8 +12,14 @@
             </ul>
 
             <div class="col-md-3 text-end">
-                <a href="/login" class="btn btn-outline-primary me-2">Login</a>
-                <a href="/registration" class="btn btn-primary">Sign-up</a>
+                <?php
+                if (auth()->isUserLogin()) {
+                    echo '<a href="/registration" class="btn btn-primary">' . auth()->getUser()->username . '</a>';
+                } else {
+                    echo '<a href="/login" class="btn btn-outline-primary me-2">Login</a>
+                    <a href="/registration" class="btn btn-primary">Sign-up</a>';
+                }
+                ?>
             </div>
         </header>
     </div>
