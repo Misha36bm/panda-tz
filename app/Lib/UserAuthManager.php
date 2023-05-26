@@ -13,6 +13,18 @@ class UserAuthManager
         $this->userModel = new User();
     }
 
+    public function isUserLogin()
+    {
+        $userName = $this->getFromCookies('user_name');
+        $password = $this->getFromCookies('tocken');
+
+        if (is_null($userName) || is_null($password)) {
+            return false;
+        }
+
+        return $this->userModel->where('username', $userName)->where('password', $password)->exists();
+    }
+
     public function registerNewUser($userName, $email, $password)
     {
         if (($userName == '' && $email == '' && $password == '') || $this->isUserExists($userName, $email)) {
@@ -58,6 +70,15 @@ class UserAuthManager
     {
         setcookie('user_name', serialize($userName));
         setcookie('tocken', serialize($password));
+    }
+
+    private function getFromCookies($key)
+    {
+        if (array_key_exists($key, $_COOKIE)) {
+            return unserialize($_COOKIE[$key]);
+        }
+
+        return null;
     }
 
     private function isUserExists($userName, $email)
