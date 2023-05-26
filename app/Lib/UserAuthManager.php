@@ -22,11 +22,23 @@ class UserAuthManager
         $password = password_hash($password, PASSWORD_DEFAULT);
 
 
-        return $this->userModel->insert([
+        $status = $this->userModel->insert([
             'username' => $userName,
             'email' => $email,
             'password' => $password
         ]);
+
+        if ($status) {
+            $this->writeUserToCookie($userName, $password);
+        }
+
+        return $status;
+    }
+
+    private function writeUserToCookie($userName, $password)
+    {
+        setcookie('user_name', serialize($userName));
+        setcookie('tocken', serialize($password));
     }
 
     private function isUserExists($userName, $email)
