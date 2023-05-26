@@ -22,10 +22,10 @@
                     </div>
 
                     <?php
-                    foreach ($quiz->options as $option) {
+                    foreach ($quiz->options as $index => $option) {
                         echo view('components.admin.quiz-option', [
-                            'isCorrect' => $option->is_correct ? 'checked' : '',
-                            'optionText' => $option->option_text
+                            'option' => $option,
+                            'iteration' => $index
                         ]);
                     }
                     ?>
