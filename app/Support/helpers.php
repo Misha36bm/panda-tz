@@ -1,5 +1,7 @@
 <?php
 
+use Panda\Tz\Lib\UserAuthManager;
+
 function view($view = null, $data = [])
 {
     $pathToViewFolder = app()->getAppPath() . '/resources/views/';
@@ -18,4 +20,9 @@ function view($view = null, $data = [])
     ob_start();
     include $path;
     return ob_get_clean();
+}
+
+function auth()
+{
+    return new UserAuthManager;
 }
