@@ -14,7 +14,17 @@
             <div class="col-md-3 text-end">
                 <?php
                 if (auth()->isUserLogin()) {
-                    echo '<a href="/registration" class="btn btn-primary">' . auth()->getUser()->username . '</a>';
+                    echo '
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        ' . auth()->getUser()->username . '
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/personal-area">Personal Area</a></li>
+                            <li><a class="dropdown-item" href="/logout">Log out</a></li>
+                        </ul>
+                    </div>
+                    ';
                 } else {
                     echo '<a href="/login" class="btn btn-outline-primary me-2">Login</a>
                     <a href="/registration" class="btn btn-primary">Sign-up</a>';
