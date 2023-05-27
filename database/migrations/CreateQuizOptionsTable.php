@@ -17,6 +17,9 @@ class CreateQuizOptionsTable extends Migration
 
             $table->string('option_text')->nullable(false);
             $table->boolean('is_correct')->nullable(false)->default(false);
+
+            $table->integer('votes')->default(0);
+            $table->timestamps();
         });
     }
 }

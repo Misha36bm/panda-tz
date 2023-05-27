@@ -16,6 +16,9 @@ class CreateQuizzesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
 
             $table->string('quiz_title')->nullable(false);
+
+            $table->boolean('is_showed')->nullable(false)->default(false);
+            $table->timestamps();
         });
     }
 }
