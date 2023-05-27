@@ -15,6 +15,8 @@ class QuizOptions extends Model
         'is_correct'
     ];
 
+    public $timestamps = false;
+
     /**
      * Get the quiz that owns the QuizOptions
      *
@@ -23,5 +25,20 @@ class QuizOptions extends Model
     public function quiz(): BelongsTo
     {
         return $this->belongsTo(Quiz::class, 'id', 'quiz_id');
+    }
+
+    public function updateText($text)
+    {
+        $this->update(['option_text' => $text]);
+    }
+
+    public function updateCorrectAnswer($is_correct)
+    {
+        $this->update(['is_correct' => $is_correct]);
+    }
+
+    public function deleteOption()
+    {
+        $this->delete();
     }
 }
