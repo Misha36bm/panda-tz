@@ -33,8 +33,7 @@
 
 
             </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-secondary">Add option</button>
+            <div class="modal-footer">
                 <button type="submit" form="editQuiz<?= $quiz->id ?>" class="btn btn-primary">Save changes</button>
             </div>
         </div>
