@@ -10,6 +10,8 @@ class AdminAreaController extends Controller
 {
     public function __construct()
     {
+        parent::__construct();
+
         if (!auth()->isUserLogin()) {
             return header("Location: /", true, 403);
         }
@@ -26,9 +28,21 @@ class AdminAreaController extends Controller
 
     public function create_quiz()
     {
-        return view('index', [
-            'slot' => view('pages.admin.create-quiz')
-        ]);
+        $user = auth()->getUser();
+
+        $quiz = (new Quiz([
+            'user_id' => $user->id,
+            'quiz_title' => $this->request['quiz-title']
+        ]));
+
+        $quiz->save();
+
+        $quiz->updateOptions($this->request['option']['text'], $this->request['option']['answer-index']);
+
+        $user->quizzes()->save($quiz);
+
+
+        return header("Location: /personal-area", true, 302);
     }
 
     public function edit_quiz($id)
