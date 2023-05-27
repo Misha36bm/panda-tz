@@ -3,7 +3,7 @@
 
     <label class="form-check-label w-100 ms-4" for="option">
         <div class="input-group mb-4">
-            <span class="input-group-text">Option</span>
+            <span class="input-group-text">Option (<?= $option->votes ?> votes)</span>
             <input type="text" name="option[text][]" value="<?= $option->option_text ?>" class="form-control">
         </div>
     </label>

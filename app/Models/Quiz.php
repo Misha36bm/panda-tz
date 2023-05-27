@@ -46,25 +46,24 @@ class Quiz extends Model
     {
         $this->update(['is_showed' => $status]);
 
-        
+
         return $this;
     }
 
     public function updateOptions($options, $correctAnswerIndex = 0)
     {
-        $this->options->each(fn ($item) => $item->deleteOption());
+        $this->options->each(function ($item, $index) use ($options, $correctAnswerIndex) {
+            $newText = $options[$index];
+            $newStatus = $correctAnswerIndex == $index;
 
-        $optionsModelsToSave = [];
+            if ($newText != $item->option_text) {
+                $item->updateText($newText);
+            }
 
-        foreach ($options as $index => $optionText) {
-            $optionsModelsToSave[$index] = new QuizOptions([
-                'quiz_id' => $this->id,
-                'option_text' => $optionText,
-                'is_correct' => $index == $correctAnswerIndex
-            ]);
-        }
-
-        $this->options()->saveMany($optionsModelsToSave);
+            if ($newStatus != $item->is_correct) {
+                $item->updateCorrectAnswer($newText);
+            }
+        });
 
 
         return $this;
