@@ -3,6 +3,7 @@
         <tr>
             <th scope="col">Title</th>
             <th scope="col">Is Showed</th>
+            <th scope="col">Votes</th>
             <th scope="col">Created At</th>
             <th>
                 <div class="d-flex align-items-center flex-column-reverse">

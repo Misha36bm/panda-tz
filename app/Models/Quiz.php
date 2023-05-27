@@ -69,6 +69,15 @@ class Quiz extends Model
         $this->delete();
     }
 
+    public function getTotalVotes()
+    {
+        $totalVotes = $this->options->pluck('votes');
+
+        $totalVotes = array_sum($totalVotes ->toArray());
+
+        return $totalVotes;
+    }
+
     public function vote($optionId)
     {
         $needleOption = $this->options->where('id', $optionId);

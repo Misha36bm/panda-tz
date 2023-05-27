@@ -6,6 +6,9 @@
         <input type="checkbox" <?= $quiz->is_showed ? 'checked' : ''  ?> class="is-quiz-showed-status" data-quiz-id="<?= $quiz->id ?>">
     </td>
     <td>
+        <?= $quiz->getTotalVotes() ?>
+    </td>
+    <td>
         <?= $quiz->created_at ?>
     </td>
     <td>
