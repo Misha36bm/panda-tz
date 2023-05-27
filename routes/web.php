@@ -51,6 +51,11 @@ return [
         'url' => '/edit-quiz/{id}',
         'callback' => [AdminAreaController::class, 'edit_quiz']
     ],
+    [
+        'methood' => 'post',
+        'url' => '/delete-quiz/{id}',
+        'callback' => [AdminAreaController::class, 'delete_quiz']
+    ],
 
     // registration
     [

@@ -62,4 +62,11 @@ class Quiz extends Model
 
         return $this;
     }
+
+    public function deleteQuiz()
+    {
+        $this->options->each(fn ($item) => $item->deleteOption());
+
+        $this->delete();
+    }
 }
