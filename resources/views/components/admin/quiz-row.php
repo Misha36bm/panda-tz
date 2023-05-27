@@ -6,6 +6,9 @@
         <input type="checkbox" <?= $quiz->is_showed ? 'checked' : ''  ?> class="is-quiz-showed-status" data-quiz-id="<?= $quiz->id ?>">
     </td>
     <td>
+        <?= $quiz->created_at ?>
+    </td>
+    <td>
         <div class="d-flex justify-content-center">
             <?= view('components.admin.quiz-edit-modal', ['quiz' => $quiz]) ?>
 
@@ -15,8 +18,5 @@
                 </button>
             </form>
         </div>
-    </td>
-    <td>
-        <?= $quiz->created_at ?>
     </td>
 </tr>
