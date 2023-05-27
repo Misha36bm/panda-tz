@@ -13,6 +13,11 @@ class UserAuthManager
         $this->userModel = new User();
     }
 
+    public static function checkApiKey($key)
+    {
+        return (new self)->userModel->where('api_key', $key)->exists();
+    }
+
     public function logout()
     {
         if (!$this->isUserLogin()) {
@@ -67,7 +72,7 @@ class UserAuthManager
             'username' => $userName,
             'email' => $email,
             'password' => $password,
-            'api_key'=> $api_key
+            'api_key' => $api_key
         ]);
 
         if ($status) {
