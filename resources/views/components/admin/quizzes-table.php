@@ -1,4 +1,4 @@
-<table class="table text-center">
+<table class="table text-center" id="quizzes-table">
     <thead>
         <tr>
             <th scope="col">Title</th>
