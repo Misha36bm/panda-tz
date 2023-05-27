@@ -42,6 +42,14 @@ class Quiz extends Model
         return $this;
     }
 
+    public function updateStatus($status)
+    {
+        $this->update(['is_showed' => $status]);
+
+        
+        return $this;
+    }
+
     public function updateOptions($options, $correctAnswerIndex = 0)
     {
         $this->options->each(fn ($item) => $item->deleteOption());
@@ -73,7 +81,7 @@ class Quiz extends Model
     {
         $totalVotes = $this->options->pluck('votes');
 
-        $totalVotes = array_sum($totalVotes ->toArray());
+        $totalVotes = array_sum($totalVotes->toArray());
 
         return $totalVotes;
     }

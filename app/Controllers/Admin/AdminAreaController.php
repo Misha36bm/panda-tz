@@ -51,6 +51,7 @@ class AdminAreaController extends Controller
         $quiz = Quiz::find($id)->first();
 
         $quiz->updateTitle($this->request['quiz-title'])
+            ->updateStatus(isset($this->request['show-quiz']))
             ->updateOptions(
                 $this->request['option']['text'],
                 $this->request['option']['answer-index']

@@ -16,6 +16,12 @@
 
 
                 <form action="/edit-quiz/<?= $quiz->id ?>" class="text-start" method="post" id="editQuiz<?= $quiz->id ?>">
+                    <div class="form-check text-start mb-3">
+                        <input class="form-check-input" type="checkbox" value="" name="show-quiz" id="show-quiz" <?= $quiz->is_showed ? 'checked' : '' ?>>
+                        <label class="form-check-label" for="show-quiz">
+                            Show Quiz?
+                        </label>
+                    </div>
                     <div class="input-group mb-4">
                         <span class="input-group-text">Title</span>
                         <input type="text" name="quiz-title" value="<?= $quiz->quiz_title ?>" class="form-control">
