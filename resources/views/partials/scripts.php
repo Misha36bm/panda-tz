@@ -3,3 +3,19 @@
 
 <!-- jQuery scripts -->
 <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+<script>
+    const CREATE_QUIZ_MODAL = document.getElementById('createQuizModal');
+
+    const ADD_NEW_OPTION_BTN = CREATE_QUIZ_MODAL.querySelector('.modal-footer .btn-secondary');
+
+    const CREATE_QUIZ_FORM = CREATE_QUIZ_MODAL.querySelector('#create-quiz');
+
+    ADD_NEW_OPTION_BTN.addEventListener('click', (e) => {
+        const TEMPLATE_OF_OPTION = document.createElement('div')
+
+        TEMPLATE_OF_OPTION.innerHTML = CREATE_QUIZ_FORM.querySelector('.form-check').outerHTML
+
+        CREATE_QUIZ_FORM.appendChild(TEMPLATE_OF_OPTION)
+    })
+</script>

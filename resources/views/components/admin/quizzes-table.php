@@ -2,7 +2,10 @@
     <thead>
         <tr>
             <th scope="col">Title</th>
-            <th scope="col">Actions</th>
+            <th scope="col">
+                Actions
+                <?= view('components.admin.create-quiz') ?>
+            </th>
         </tr>
     </thead>
     <tbody>
