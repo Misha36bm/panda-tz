@@ -28,5 +28,25 @@
 
         $('#quizzes-table').DataTable()
 
+        $('#show-hide-api-key').on('click', (e) => {
+            if ($('#api-key').attr('type') == 'text') {
+                $('#api-key').attr('type', 'password')
+            } else {
+                $('#api-key').attr('type', 'text')
+            }
+        })
+
+        $('#copy-api-key').on('click', (e) => {
+            let temp = $("<input>");
+
+            $("body").append(temp);
+
+            temp.val($('#api-key').val()).select();
+
+            document.execCommand("copy");
+            temp.remove();
+
+            alert('Done!')
+        })
     })()
 </script>
