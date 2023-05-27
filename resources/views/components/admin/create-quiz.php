@@ -13,12 +13,19 @@
             </div>
             <div class="modal-body">
                 <form action="/create-quiz" method="post" id="create-quiz">
+                    <div class="form-check text-start mb-3">
+                        <input class="form-check-input" type="checkbox" value="show-quiz" name id="show-quiz" checked>
+                        <label class="form-check-label" for="show-quiz">
+                            Show Quiz?
+                        </label>
+                    </div>
+
                     <div class="input-group mb-4">
                         <span class="input-group-text">Title</span>
                         <input type="text" name="quiz-title" value="" class="form-control">
                     </div>
 
-                    <div class="form-check mb-3 d-flex align-items-baseline">
+                    <div class="form-check mb-3 d-flex align-items-baseline input-template">
                         <input class="form-check-input" type="radio" required name="option[answer-index]" value="">
 
                         <label class="form-check-label w-100 ms-4" for="option">
