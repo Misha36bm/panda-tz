@@ -14,4 +14,15 @@ class HomeController extends Controller
             'slot' => view('pages.main-page', ['quizzes' => $quizzes])
         ]);
     }
+
+    public function vote_quiz($id)
+    {
+        $selectedOption = $this->request['selected_option'];
+
+        $quiz = Quiz::find($id)->first();
+
+        $quiz->vote($selectedOption);
+
+        return header("Location: /", true, 302);
+    }
 }

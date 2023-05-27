@@ -39,6 +39,11 @@ return [
         'url' => '/',
         'callback' => [HomeController::class, 'index']
     ],
+    [
+        'methood' => 'post',
+        'url' => '/vote-quiz/{id}',
+        'callback' => [HomeController::class, 'vote_quiz']
+    ],
 
     // Admin area
     [
