@@ -29,6 +29,15 @@ class AdminAreaController extends Controller
 
     public function edit_quiz($id)
     {
-        
+        $quiz = Quiz::find($id)->first();
+
+        $quiz->updateTitle($this->request['quiz-title'])
+            ->updateOptions(
+                $this->request['option']['text'],
+                $this->request['option']['answer-index']
+            );
+
+
+        return header("Location: /personal-area", true, 302);
     }
 }
