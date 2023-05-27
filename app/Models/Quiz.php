@@ -69,6 +69,24 @@ class Quiz extends Model
         return $this;
     }
 
+    public function createOptions($options, $correctAnswerIndex = 0)
+    {
+        $optionsModelsToSave = [];
+
+        foreach ($options as $index => $optionText) {
+            $optionsModelsToSave[$index] = new QuizOptions([
+                'quiz_id' => $this->id,
+                'option_text' => $optionText,
+                'is_correct' => $index == $correctAnswerIndex
+            ]);
+        }
+
+        $this->options()->saveMany($optionsModelsToSave);
+
+
+        return $this;
+    }
+
     public function deleteQuiz()
     {
         $this->options->each(fn ($item) => $item->deleteOption());

@@ -38,7 +38,7 @@ class AdminAreaController extends Controller
 
         $quiz->save();
 
-        $quiz->updateOptions($this->request['option']['text'], $this->request['option']['answer-index']);
+        $quiz->createOptions($this->request['option']['text'], $this->request['option']['answer-index']);
 
         $user->quizzes()->save($quiz);
 
