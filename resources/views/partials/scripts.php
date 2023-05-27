@@ -17,5 +17,13 @@
         TEMPLATE_OF_OPTION.innerHTML = CREATE_QUIZ_FORM.querySelector('.form-check').outerHTML
 
         CREATE_QUIZ_FORM.appendChild(TEMPLATE_OF_OPTION)
+
+        let RADIO_BTNS_IN_MODAL = CREATE_QUIZ_FORM.querySelectorAll('input[type="radio"]')
+
+        RADIO_BTNS_IN_MODAL = Array.from(RADIO_BTNS_IN_MODAL);
+
+        RADIO_BTNS_IN_MODAL.forEach((radioBnt, index) => {
+            radioBnt.value = index;
+        })
     })
 </script>
