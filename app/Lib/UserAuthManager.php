@@ -60,11 +60,14 @@ class UserAuthManager
 
         $password = password_hash($password, PASSWORD_DEFAULT);
 
+        $api_key = password_hash(uniqid(), PASSWORD_DEFAULT);
+
 
         $status = $this->userModel->insert([
             'username' => $userName,
             'email' => $email,
-            'password' => $password
+            'password' => $password,
+            'api_key'=> $api_key
         ]);
 
         if ($status) {
