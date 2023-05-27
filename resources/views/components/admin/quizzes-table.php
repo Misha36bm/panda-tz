@@ -2,9 +2,15 @@
     <thead>
         <tr>
             <th scope="col">Title</th>
+            <th scope="col">Is Showed</th>
             <th scope="col">
-                Actions
-                <?= view('components.admin.create-quiz') ?>
+                <div class="d-flex align-items-center flex-column-reverse">
+                    Actions
+                    <?= view('components.admin.create-quiz') ?>
+                </div>
+            </th>
+            <th>
+                Created At
             </th>
         </tr>
     </thead>
