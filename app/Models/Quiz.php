@@ -14,8 +14,6 @@ class Quiz extends Model
         'quiz_title',
     ];
 
-    public $timestamps = false;
-
     /**
      * Get the user that owns the Quiz
      *

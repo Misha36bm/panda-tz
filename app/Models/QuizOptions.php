@@ -15,8 +15,6 @@ class QuizOptions extends Model
         'is_correct'
     ];
 
-    public $timestamps = false;
-
     /**
      * Get the quiz that owns the QuizOptions
      *
