@@ -14,7 +14,7 @@
             <div class="modal-body">
                 <form action="/create-quiz" method="post" id="create-quiz">
                     <div class="form-check text-start mb-3">
-                        <input class="form-check-input" type="checkbox" value="show-quiz" name id="show-quiz" checked>
+                        <input class="form-check-input" type="checkbox" value="" name="show-quiz" id="show-quiz" checked>
                         <label class="form-check-label" for="show-quiz">
                             Show Quiz?
                         </label>

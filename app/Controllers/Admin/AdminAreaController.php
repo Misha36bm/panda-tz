@@ -32,7 +32,8 @@ class AdminAreaController extends Controller
 
         $quiz = (new Quiz([
             'user_id' => $user->id,
-            'quiz_title' => $this->request['quiz-title']
+            'quiz_title' => $this->request['quiz-title'],
+            'is_showed' => isset($this->request['show-quiz'])
         ]));
 
         $quiz->save();
