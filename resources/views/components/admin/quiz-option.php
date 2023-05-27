@@ -1,5 +1,5 @@
 <div class="form-check mb-3 d-flex align-items-baseline">
-    <input class="form-check-input" type="radio" name="option[is-answer]" value="<?=$iteration?>" <?php if ($option->is_correct) { echo 'checked'; } ?>>
+    <input class="form-check-input" type="radio" name="option[answer-index]" value="<?=$iteration?>" <?php if ($option->is_correct) { echo 'checked'; } ?>>
 
     <label class="form-check-label w-100 ms-4" for="option">
         <div class="input-group mb-4">
