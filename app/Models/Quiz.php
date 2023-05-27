@@ -68,4 +68,15 @@ class Quiz extends Model
 
         $this->delete();
     }
+
+    public function vote($optionId)
+    {
+        $needleOption = $this->options->where('id', $optionId);
+
+        if ($needleOption->isEmpty()) {
+            return;
+        }
+
+        $needleOption->first()->vote();
+    }
 }

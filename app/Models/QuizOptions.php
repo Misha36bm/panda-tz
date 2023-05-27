@@ -12,6 +12,7 @@ class QuizOptions extends Model
     protected $fillable = [
         'quiz_id',
         'option_text',
+        'votes',
         'is_correct'
     ];
 
@@ -38,5 +39,10 @@ class QuizOptions extends Model
     public function deleteOption()
     {
         $this->delete();
+    }
+
+    public function vote()
+    {
+        $this->increment('votes');
     }
 }
