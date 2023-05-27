@@ -42,7 +42,7 @@ class Quiz extends Model
         return $this;
     }
 
-    public function updateOptions($options, $correctAnswerIndex)
+    public function updateOptions($options, $correctAnswerIndex = 0)
     {
         $this->options->each(fn ($item) => $item->deleteOption());
 
