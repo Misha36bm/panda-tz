@@ -10,8 +10,15 @@ class HomeController extends Controller
     {
         $quizzes = Quiz::select()->where('is_showed', true)->inRandomOrder()->limit(3)->get();
 
+        $view = view('components.main-page-quizzes-empty', ['quizzes' => $quizzes]);
+
+        if ($quizzes->isNotEmpty()) {
+            $view = view('pages.main-page', ['quizzes' => $quizzes]);
+        }
+
+
         return view('index', [
-            'slot' => view('pages.main-page', ['quizzes' => $quizzes])
+            'slot' => $view,
         ]);
     }
 
