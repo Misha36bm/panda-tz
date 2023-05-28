@@ -25,4 +25,32 @@ class User extends Model
     {
         return $this->hasMany(Quiz::class, 'user_id', 'id');
     }
+
+    public function getRandomQuiz()
+    {
+        if ($this->quizzes->isEmpty()) {
+            return [];
+        }
+        
+
+        $quiz = $this->quizzes->where('is_showed', true)->random();
+
+        $options = $quiz->options;
+
+        $result = [
+            'quiz-title' => $quiz->quiz_title,
+            'total-votes' => $quiz->getTotalVotes(),
+            'quiz-options' => []
+        ];
+
+        foreach ($options as $index => $option) {
+            $result['quiz-options'][$index] = [
+                'option-text' => $option->option_text,
+                'option-votes' => $option->votes,
+                'is-correct' => $option->is_correct
+            ];
+        }
+
+        return $result;
+    }
 }
