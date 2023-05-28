@@ -26,12 +26,17 @@ class User extends Model
         return $this->hasMany(Quiz::class, 'user_id', 'id');
     }
 
+    public static function getUserByApiKey($key)
+    {
+        return self::select()->where('api_key', $key)->first();
+    }
+
     public function getRandomQuiz()
     {
         if ($this->quizzes->isEmpty()) {
             return [];
         }
-        
+
 
         $quiz = $this->quizzes->where('is_showed', true)->random();
 

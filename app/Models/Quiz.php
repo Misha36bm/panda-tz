@@ -35,6 +35,11 @@ class Quiz extends Model
         return $this->hasMany(QuizOptions::class, 'quiz_id', 'id');
     }
 
+    public static function getRandomActiveQuizzes($limit = 3)
+    {
+        return self::select()->where('is_showed', true)->inRandomOrder()->limit($limit)->get();
+    }
+
     public function updateTitle($title)
     {
         $this->update(['quiz_title' => $title]);

@@ -8,7 +8,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $quizzes = Quiz::select()->where('is_showed', true)->inRandomOrder()->limit(3)->get();
+        $quizzes = Quiz::getRandomActiveQuizzes();
 
         $view = view('components.main-page-quizzes-empty', ['quizzes' => $quizzes]);
 

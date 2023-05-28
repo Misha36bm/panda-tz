@@ -23,7 +23,7 @@ class ApiController extends Controller
             return header("Location: http://panda-tz.loc/api/get-random-quiz", true, 403);
         }
 
-        $user = User::select()->where('api_key', $api_key)->first();
+        $user = User::getUserByApiKey($api_key);
 
         $result = $user->getRandomQuiz();
 

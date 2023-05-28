@@ -6,6 +6,13 @@ use Panda\Tz\Lib\UserAuthManager;
 
 class AuthController extends Controller
 {
+    private $authMeneger;
+
+    public function __construct()
+    {
+        $this->authMeneger = new UserAuthManager;
+    }
+
     public function showRegistratoinPage()
     {
         return view('index', [
@@ -15,9 +22,7 @@ class AuthController extends Controller
 
     public function registration()
     {
-        $authManager = new UserAuthManager;
-
-        $regStatus = $authManager->registerNewUser($this->request['username'], $this->request['email'], $this->request['password']);
+        $regStatus = $this->authMeneger->registerNewUser($this->request['username'], $this->request['email'], $this->request['password']);
 
         if ($regStatus) {
             return header("Location: /personal-area", true, 302);
@@ -36,9 +41,7 @@ class AuthController extends Controller
 
     public function login()
     {
-        $authManager = new UserAuthManager;
-
-        $logStatus = $authManager->login($this->request['email'], $this->request['password']);
+        $logStatus = $this->authMeneger->login($this->request['email'], $this->request['password']);
 
         if ($logStatus) {
             return header("Location: /personal-area", true, 302);
@@ -50,9 +53,7 @@ class AuthController extends Controller
 
     public function logout()
     {
-        $authManager = new UserAuthManager;
-
-        $authManager->logout();
+        $this->authMeneger->logout();
 
 
         return header("Location: /", true, 302);
